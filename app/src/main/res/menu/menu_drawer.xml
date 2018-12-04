@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Main"
+        />
+
+    <item
+        android:id="@+id/option1"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Taylor"
+        />
+
+    <item
+        android:id="@+id/option2"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Newton Rapson"
+        />
+
+    <item
+        android:id="@+id/option3"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Bisection"
+        />
+
+</menu>

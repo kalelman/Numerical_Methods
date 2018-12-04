@@ -1,3 +1,11 @@
 <resources>
+
     <string name="app_name">Numerical_Methods</string>
+    <string name="txt_settings">Settings</string>
+    <string name="txt_search">Search</string>
+    <string name="toolbar_title">Main</string>
+    <string name="openDrawer">Open</string>
+    <string name="closeDrawer">Close</string>
+    <string name="txt_main">Main</string>
+
 </resources>
