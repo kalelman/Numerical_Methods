@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,7 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.kalelman.numerical_methods.R;
-import com.kalelman.numerical_methods.fragment.ContentFragment;
+import com.kalelman.numerical_methods.fragment.ContentFragmentOption1;
 import com.kalelman.numerical_methods.fragment.ContentFragmentOption2;
 import com.kalelman.numerical_methods.fragment.ContentFragmentOption3;
 import com.kalelman.numerical_methods.fragment.ContentFrarmentOptionMain;
@@ -28,7 +29,7 @@ import butterknife.ButterKnife;
  * @description Main Activity container for all app content App
  */
 
-public class MainActivity extends ToolBar {
+public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -42,7 +43,16 @@ public class MainActivity extends ToolBar {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setTitle(R.string.toolbar_title);
+
+        }
+
         setText();
         showMainScreen();
 
@@ -70,20 +80,25 @@ public class MainActivity extends ToolBar {
                 switch (menuItem.getItemId()) {
                     case R.id.main:
                         showMainScreen();
+                        titleToolBar.setText("Main");
+                        return true;
+
                     case R.id.option1:
-                        ContentFragment fragment = new ContentFragment();
+                        ContentFragmentOption1 fragmentOption1 = new ContentFragmentOption1();
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.fragment, fragment);
+                        transaction.replace(R.id.fragment, fragmentOption1);
                         transaction.addToBackStack(null); // just for remember the capacity to come back to the previus fragment
                         transaction.commit();
+                        titleToolBar.setText("Bisection");
                         return true;
 
                     case R.id.option2:
-                        ContentFragmentOption2 fragmentDrama = new ContentFragmentOption2();
+                        ContentFragmentOption2 fragmentOption2 = new ContentFragmentOption2();
                         FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-                        t.replace(R.id.fragment, fragmentDrama);
+                        t.replace(R.id.fragment, fragmentOption2);
                         t.addToBackStack(null);
                         t.commit();
+                        titleToolBar.setText("Option2");
                         return true;
 
                     case R.id.option3:
@@ -92,6 +107,7 @@ public class MainActivity extends ToolBar {
                         trans.replace(R.id.fragment, fragmentMistery);
                         trans.addToBackStack(null);
                         trans.commit();
+                        titleToolBar.setText("Option3");
                         return true;
 
                     default:
@@ -113,24 +129,22 @@ public class MainActivity extends ToolBar {
      * Get resource from the Layout
      * @return the layout resource
      */
-    @Override
+    /*@Override
     protected int getLayoutResource() {
         return R.layout.activity_main;
-    }
+    }*/
 
     /**
      * Implement the Main View in a fragment and return a true vaule for
      * the case of switch statement
      * @return Boolean true
      */
-    private boolean showMainScreen() {
+    private void showMainScreen() {
         ContentFrarmentOptionMain fragmentMain = new ContentFrarmentOptionMain();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment, fragmentMain);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-
-        return true;
     }
 
     @Override
