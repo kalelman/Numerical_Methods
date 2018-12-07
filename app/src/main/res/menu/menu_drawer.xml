@@ -10,7 +10,7 @@
     <item
         android:id="@+id/option1"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Taylor"
+        android:title="Bisection"
         />
 
     <item
